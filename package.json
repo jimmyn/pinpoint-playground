@@ -1,0 +1,49 @@
+{
+  "name": "pinpoint-playground",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --watch",
+    "lint": "tslint -t stylish -p tsconfig.json --fix 'src/**/*.ts'"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.1.5",
+    "env-var": "^3.4.1",
+    "error-to-json": "^1.1.0",
+    "http-errors": "^1.7.1",
+    "joi": "^14.1.0",
+    "joi-error-formatter": "^0.5.3",
+    "middy": "^0.19.2",
+    "source-map-support": "^0.5.9"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/aws-lambda": "^8.10.15",
+    "@types/jest": "^23.3.9",
+    "@types/joi": "^14.0.0",
+    "@types/node": "^10.12.9",
+    "@types/serverless": "^1.18.0",
+    "aws-sdk": "^2.359.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-source-map-support": "^2.0.1",
+    "serverless-iam-roles-per-function": "^1.0.4",
+    "serverless-pseudo-parameters": "^2.2.0",
+    "serverless-webpack": "^5.2.0",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.16.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-microsoft-contrib": "^5.2.1",
+    "typescript": "^3.1.6",
+    "webpack": "^4.26.0",
+    "webpack-node-externals": "^1.7.2"
+  }
+}

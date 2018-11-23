@@ -1,0 +1,37 @@
+service: pinpoint-playground
+
+plugins:
+  - serverless-iam-roles-per-function # required for iamRoleStatements per function
+  - serverless-pseudo-parameters # required for #{AWS::Region}:#{AWS::AccountId} syntax to work
+  - serverless-webpack
+
+package:
+  # we want to package each function individually
+  individually: true
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+    packager: yarn
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: us-east-1
+  deploymentBucket: moonmail-v3-shared-deployments
+
+functions:
+  campaignHook:
+    handler: src/campaignHook/handler.default
+    iamRoleStatements: []
+
+resources:
+  Resources:
+    PinpointLambdaPermission:
+      Type: AWS::Lambda::Permission
+      Properties:
+        FunctionName: {Fn::GetAtt: ['CampaignHookLambdaFunction', 'Arn']}
+        Principal: pinpoint.us-east-1.amazonaws.com
+        Action: lambda:InvokeFunction

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`validation Joi.param should correctly validate query and path parameters 1`] = `"\\"userId\\" contains an invalid value"`;
+
+exports[`validation Joi.param should correctly validate query and path parameters 2`] = `"\\"userId\\" contains an invalid value"`;
+
+exports[`validation assert throw error if value is incorrect 1`] = `"Validation test: \\"foo\\" is required"`;
+
+exports[`validation attempt throw error if value is incorrect 1`] = `"Validation test: \\"foo\\" must be a string"`;
+
+exports[`validation getEnv should throw error if variable is not defined 1`] = `"env-var: \\"MISSING_VAR\\" is a required variable, but it was not set"`;
