@@ -1,12 +1,10 @@
 service: pinpoint-playground
 
 plugins:
-  - serverless-iam-roles-per-function # required for iamRoleStatements per function
   - serverless-pseudo-parameters # required for #{AWS::Region}:#{AWS::AccountId} syntax to work
   - serverless-webpack
 
 package:
-  # we want to package each function individually
   individually: true
 
 custom:
@@ -22,16 +20,21 @@ provider:
   region: us-east-1
   deploymentBucket: moonmail-v3-shared-deployments
 
+  environment:
+    DEBUG: true
+
 functions:
   campaignHook:
     handler: src/campaignHook/handler.default
-    iamRoleStatements: []
 
 resources:
   Resources:
     PinpointLambdaPermission:
       Type: AWS::Lambda::Permission
       Properties:
-        FunctionName: {Fn::GetAtt: ['CampaignHookLambdaFunction', 'Arn']}
-        Principal: pinpoint.us-east-1.amazonaws.com
+        FunctionName:
+          Ref: CampaignHookLambdaFunction
+        Principal: pinpoint.#{AWS::Region}.amazonaws.com
         Action: lambda:InvokeFunction
+        SourceArn: arn:aws:mobiletargeting:#{AWS::Region}:#{AWS::AccountId}:apps/*
+        

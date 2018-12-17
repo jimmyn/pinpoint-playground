@@ -11,8 +11,8 @@ const params: CreateCampaignRequest = {
     Name: 'Test campaign',
     SegmentId: 'b3d9d5849c5b479cab75f03f86b94a93',
     // Hook: {
-    //   LambdaFunctionName: 'pinpoint-playground-dev-campaignHook',
-    //   Mode: 'DELIVERY'
+    //   LambdaFunctionName: 'pinpoint-campaign-hook',
+    //   Mode: 'FILTER'
     // },
     MessageConfiguration: {
       EmailMessage: {
@@ -21,10 +21,17 @@ const params: CreateCampaignRequest = {
         Title: 'Test campaign'
       }
     },
+    // Schedule: {
+    //   IsLocalTime: false,
+    //   QuietTime: {},
+    //   StartTime: "IMMEDIATE",
+    //   Timezone: "UTC",
+    // },
     Schedule: {
       Frequency: 'ONCE',
       StartTime: new Date().toISOString()
-    }
+    },
+    IsPaused: true
   }
 };
 
